@@ -1,0 +1,34 @@
+.social {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  @include reset-list;
+
+  @media (max-width: $tablet-width) {
+    order: 2;
+  }
+}
+
+.social--visibility {
+  @media (min-width: $mobile-width) and (max-width: $tablet-width) {
+    position: absolute;
+    top: 23px;
+    right: 100px;
+  }
+
+  @media (max-width: $mobile-width) {
+    display: none;
+  }
+}
+
+.social__item {
+  background: linear-gradient(180deg, rgba(32,185,133,1) 50%, rgba(43,162,178,1) 100%);
+  border-radius: 6px;
+  width: 40px;
+  height: 40px;
+}
+
+.social__icon {
+  margin: 10px;
+}

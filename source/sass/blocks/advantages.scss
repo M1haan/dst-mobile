@@ -1,0 +1,118 @@
+.advantages {
+  color: $default-white-color;
+}
+
+.advantages__title {
+  font-family: $Manrope-ff;
+  font-size: 55px;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+
+  @media (max-width: $tablet-width) {
+    font-size: 26px;
+    font-weight: 700;
+  }
+
+  @media (max-width: $mobile-width) {
+    font-size: 24px;
+    font-weight: 700;
+  }
+}
+
+.advantages__wrapper {
+  padding: 115px 72px;
+  max-width: 1780px;
+  margin: 0 auto;
+
+  @media (max-width: $tablet-width) {
+    max-width: 698px;
+    padding: 80px 35px;
+    gap: 30px;
+  }
+
+  @media (max-width: $mobile-width) {
+    max-width: 360px;
+    padding: 40px 15px;
+  }
+}
+
+.advantages__list {
+  @include reset-list;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  column-gap: 200px; //не правильный отступ
+  row-gap: 120px;
+
+  @media (max-width: $tablet-width) {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 90px;
+    row-gap: 40px;
+  }
+
+  @media (max-width: $mobile-width) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.advantages__item {
+  max-width: 515px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 115px;
+    left: 115px;
+    width: 249px;
+    height: 120px;
+    background-color: rgba(32, 185, 133, 0.69);
+    filter: blur(81px);
+    z-index: -1;
+
+    @media (max-width: $tablet-width) {
+      left: 10%;
+    }
+  }
+}
+
+.advantages__image {
+  margin-bottom: 6px;
+}
+
+.advantages__subtitle {
+  text-align: center;
+  font-family: $Manrope-ff;
+  font-size: 23px;
+  font-weight: 500;
+  margin: 0;
+  margin-bottom: 30px;
+
+  @media (max-width: $tablet-width) {
+
+  }
+
+  @media (max-width: $mobile-width) {
+
+  }
+}
+
+.advantages__description {
+  text-align: center;
+  font-family: $Nunito-ff;
+  font-size: 21px;
+  font-weight: 300;
+  margin: 0;
+
+  @media (max-width: $tablet-width) {
+
+  }
+
+  @media (max-width: $mobile-width) {
+
+  }
+}

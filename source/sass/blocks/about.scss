@@ -1,0 +1,185 @@
+@mixin distribute-on-circle( $nb-items, $circle-size, $item-size) { //убрать в mixin
+  $half-item: calc($item-size / 2);
+  $half-parent: calc($circle-size / 2);
+  position: relative;
+  width: $circle-size;
+  height: $circle-size;
+  padding: 0;
+  border-radius: 50%;
+  list-style: none;
+  box-sizing: content-box;
+  > * {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: $item-size;
+    height: $item-size;
+    margin: -$half-item;
+  }
+    $angle: calc(360 / $nb-items);
+    $rot: 80;
+  @for $i from 1 through $nb-items {
+    >:nth-of-type(#{$i}) {
+      transform: rotate($rot * 1deg) translate($half-parent) rotate($rot * -1deg);
+    }
+    $rot: ($rot + $angle);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.about {
+  color: $default-white-color;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-image: url('/img/about-background.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 807px;
+    z-index: -1;
+
+
+    @media (min-resolution: 2dppx) {
+      background-image: url('/img/about-background@2x.jpg');
+    }
+  }
+}
+
+.about__wrapper {
+  padding: 115px 72px;
+  max-width: 1780px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+
+  @media (max-width: $tablet-width) {
+    max-width: 698px;
+    padding: 80px 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  @media (max-width: $mobile-width) {
+    max-width: 360px;
+    padding: 0 15px;
+  }
+}
+
+.about__tabs {
+  display: flex;
+  gap: 20px;
+  position: relative;
+
+  @include reset-list;
+
+  @media (min-width: $tablet-width) {
+    @include distribute-on-circle(6, 377px, 99px);
+  margin: 5em auto 0;
+  }
+
+  @media (max-width: $tablet-width) {
+    gap: 40px;
+  }
+
+  @media (min-width: $tablet-width) {
+    &::after {
+      content: '';
+      top: -12px;
+      left: -16px;
+      width: 345px;
+      height: 377px;
+      position: absolute;
+      background: url('/img/svg/about-circle.svg');
+      z-index: -1;
+    }
+  }
+}
+
+.about__tab {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  width: 99px;
+  height: 99px;
+
+  @media (max-width: $tablet-width) {
+    width: 82px;
+    height: 82px;
+  }
+}
+
+.about__icon {
+
+  &:hover {
+    width: 140px;
+    height: 140px;
+    animation: rotate 3s infinite;
+
+    @media (max-width: $tablet-width) {
+      width: 115px;
+      height: 115px;
+    }
+  }
+
+  @media (max-width: $tablet-width) {
+    width: 82px;
+    height: 82px;
+  }
+}
+
+.about__list {
+  @include reset-list;
+
+  @media (max-width: $tablet-width) {
+    width: 100%;
+  }
+}
+
+.about__item {
+  font-family: $Nunito-ff;
+  font-size: 20px;
+  font-weight: 300;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: $tablet-width) {
+    display: grid;
+    grid-template-columns: 1fr 194px;
+    gap: 11px;
+    align-items: center;
+  }
+}
+
+.about__link {
+  padding: 25px 55px;
+  width: fit-content;
+  margin-top: 30px; //высчитать отступ
+
+  @media (max-width: $tablet-width) {
+    font-size: 13px;
+    padding: 17px 42px;
+    margin-top: 0;
+  }
+}
+
+

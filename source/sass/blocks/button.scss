@@ -1,0 +1,38 @@
+.button {
+  color: #FFF;
+  font-size: 20px;
+  font-weight: 300;
+  text-decoration: none;
+  border: none;
+  position: relative;
+
+  &--accent {
+    background: linear-gradient(90deg, #20B985 0%, #2C9CAB 90.1%, #2BA2B2 99.99%);
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: 50%;
+      right: 0;
+      height: 4px;
+      background: rgba(33, 185, 135, 1);
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      right: 50%;
+      height: 4px;
+      background: rgba(33, 185, 135, 1);
+    }
+  }
+
+  @media (max-width: $tablet-width) {
+    font-size: 18px;
+  }
+}
+
+//нет тени как в макете
